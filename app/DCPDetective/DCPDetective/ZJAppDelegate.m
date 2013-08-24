@@ -8,28 +8,63 @@
 
 #import "ZJAppDelegate.h"
 
-@interface Chunk : NSObject
+//TODO create separate files for implementation classes
+
+@interface ZJChunk : NSObject
 @property NSString *path;
 @property int       volumeIndex;
 @end
 
-@interface Asset : NSObject
+@interface ZJAsset : NSObject
 @property NSString *assetID;
 @property NSArray  *chunkList;
+@property BOOL      packingList;
 @end
 
-@interface AssetMap : NSObject
+@interface ZJAssetMap : NSObject
+@property NSString *assetMapID;
+@property int volumeCount;
 @property NSArray *assetList;
+
 // TODO: Add remaining AssetMap properties.
 @end
 
-static NSArray *loadAssetMap(NSString *dir)
+BOOL fileExists(NSString *fileName)
+{
+    return false; // TODO
+}
+
+ZJAssetMap *parseSMPTEAssetMap(NSString *fileName)
+{
+    return nil; // TODO
+}
+
+ZJAssetMap *parseInteropAssetMap(NSString *fileName)
+{
+    return nil; // TODO
+}
+
+static ZJAssetMap *loadAssetMap(NSString *dir)
     // TODO: Contract
 {
     // If dir/ASSETMAP.xml exists,
     //  parse it as SMPTE;
     // else, if ASSETMAP exists,
     //  parse it as Interop.
+
+    NSLog(@"%@", dir);
+    NSString *assetMapName = [dir stringByAppendingPathComponent:@"ASSETMAP.xml"];
+
+    if (fileExists(assetMapName)) {
+        return parseSMPTEAssetMap(assetMapName);
+    }
+    
+    assetMapName = [dir stringByAppendingPathComponent:@"ASSETMAP"];
+
+    if (fileExists(assetMapName)) {
+        return parseInteropAssetMap(assetMapName);
+    }
+    
 
     // TODO: Process each subdirectory of dir not called lost+found or RECYCLER.
 
@@ -48,8 +83,12 @@ static NSArray *loadAssetMap(NSString *dir)
     [args removeObjectAtIndex:0];
 
     for (NSString *arg in args) {
-        NSLog(@"Detecting DCP: %@", arg);
+        //NSLog(@"Detecting DCP: %@", arg);
+        ZJAssetMap *assetMap = loadAssetMap(arg);
+        (void)assetMap;
+        
     }
+    
 }
 
 @end
