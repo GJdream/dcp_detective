@@ -10,6 +10,8 @@
 
 //TODO create separate files for implementation classes
 
+// CLASS INTERFACES
+
 @interface ZJChunk : NSObject
 @property NSString *path;
 @property int       volumeIndex;
@@ -27,14 +29,18 @@
 @property NSArray *assetList;
 
 // TODO: Add remaining AssetMap properties.
+
+- (NSString *)description;
 @end
 
-BOOL fileExists(NSString *fileName)
+// STATIC FUNCTIONS
+
+static BOOL fileExists(NSString *fileName)
 {
     return [[NSFileManager defaultManager] fileExistsAtPath:fileName];
 }
 
-NSXMLDocument *loadXMLFile(NSString *fileName)
+static NSXMLDocument *loadXMLFile(NSString *fileName)
 {
     assert(fileExists(fileName));
     NSURL *url = [NSURL fileURLWithPath:fileName];
@@ -45,27 +51,37 @@ NSXMLDocument *loadXMLFile(NSString *fileName)
 
 }
 
-ZJAssetMap *parseSMPTEAssetMap(NSString *fileName)
+static ZJAssetMap *parseSMPTEAssetMap(NSString *fileName)
     // Parses the file having the specified fileName as an SMPTE asset map.
 {
     return nil; // TODO
 }
 
-NSString *getId(NSXMLElement *elem)
-    // Returns the text of the 'Id' sub-element of 'elem', or nil if 'elem'
-    // does not have exactly one 'Id' element.
+static NSString *getString(NSXMLElement *x, NSString *key)
+    // Returns the string text of the 'key' sub-element of element x.
 {
-    NSArray *children = [elem elementsForName:@"Id"];
+    NSString *result = nil;
 
-    if ([children count] != 1) {
-        NSLog(@"Warning: expected 1 Id element in node");
-        return nil;
+    for (NSXMLElement *child in [x elementsForName:key]) {
+        result = [child stringValue];
     }
 
-    return [[children objectAtIndex:0] stringValue];
+    return result;
 }
 
-ZJAssetMap *parseInteropAssetMap(NSString *fileName)
+static int getInt(NSXMLElement *x, NSString *key)
+    // Returns the integer value of the 'key' sub-element of element x.
+{
+    int result = 0;
+
+    for (NSXMLElement *child in [x elementsForName:key]) {
+        result = [[child stringValue] intValue];
+    }
+
+    return result;
+}
+
+static ZJAssetMap *parseInteropAssetMap(NSString *fileName)
     // Parses the file having the specified fileName as an Interop-formatted
     // asset map.
 {
@@ -78,7 +94,8 @@ ZJAssetMap *parseInteropAssetMap(NSString *fileName)
 
     NSXMLElement *root = [doc rootElement];
 
-    map.assetMapID = getId(root);
+    map.assetMapID = getString(root, @"Id");
+    map.volumeCount = getInt(root, @"VolumeCount");
 
     return map; // TODO
 }
@@ -114,6 +131,8 @@ static ZJAssetMap *loadAssetMap(NSString *dir)
     return nil;
 }
 
+// CLASS IMPLEMENTATIONS
+
 @implementation ZJAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -126,9 +145,9 @@ static ZJAssetMap *loadAssetMap(NSString *dir)
     [args removeObjectAtIndex:0];
 
     for (NSString *arg in args) {
-        //NSLog(@"Detecting DCP: %@", arg);
         ZJAssetMap *assetMap = loadAssetMap(arg);
-        NSLog(@"%@", assetMap.assetMapID);
+        
+        NSLog(@"%@", assetMap);
     }
 }
 
@@ -141,6 +160,14 @@ static ZJAssetMap *loadAssetMap(NSString *dir)
 @end
 
 @implementation ZJAssetMap
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:@"\n\tId = %@\n\tVolumeCount = %d",
+            self.assetMapID,
+            self.volumeCount];
+}
+
 @end
 
 // TODO: Add implementations of remaining interfaces.
