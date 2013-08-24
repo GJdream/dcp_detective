@@ -1,0 +1,10 @@
+digraph {
+
+CPL         -> ReelList;
+ReelList    -> Reel;
+Reel        -> AssetList;
+AssetList   -> MainPicture;
+AssetList   -> MainSound;
+
+
+}

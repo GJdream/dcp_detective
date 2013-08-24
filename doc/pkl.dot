@@ -1,0 +1,6 @@
+digraph {
+
+PKL         -> AssetList;
+AssetList   -> Assets;
+
+}
