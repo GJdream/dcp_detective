@@ -87,7 +87,7 @@ static ZJAssetMap *loadAssetMap(NSString *dir)
         NSLog(@"found SMPTE asset map");
         return parseSMPTEAssetMap(assetMapName);
     }
-    
+
     assetMapName = [dir stringByAppendingPathComponent:@"ASSETMAP"];
 
     if (fileExists(assetMapName)) {
@@ -115,8 +115,8 @@ static ZJAssetMap *loadAssetMap(NSString *dir)
         //NSLog(@"Detecting DCP: %@", arg);
         ZJAssetMap *assetMap = loadAssetMap(arg);
         (void)assetMap;
+
     }
-    
 }
 
 @end
