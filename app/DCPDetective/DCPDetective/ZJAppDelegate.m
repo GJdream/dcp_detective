@@ -58,13 +58,13 @@ static ZJAssetMap *loadAssetMap(NSString *dir)
     if (fileExists(assetMapName)) {
         return parseSMPTEAssetMap(assetMapName);
     }
-    
+
     assetMapName = [dir stringByAppendingPathComponent:@"ASSETMAP"];
 
     if (fileExists(assetMapName)) {
         return parseInteropAssetMap(assetMapName);
     }
-    
+
 
     // TODO: Process each subdirectory of dir not called lost+found or RECYCLER.
 
@@ -86,9 +86,9 @@ static ZJAssetMap *loadAssetMap(NSString *dir)
         //NSLog(@"Detecting DCP: %@", arg);
         ZJAssetMap *assetMap = loadAssetMap(arg);
         (void)assetMap;
-        
+
     }
-    
+
 }
 
 @end
