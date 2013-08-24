@@ -31,17 +31,45 @@
 
 BOOL fileExists(NSString *fileName)
 {
-    return false; // TODO
+    return [[NSFileManager defaultManager] fileExistsAtPath:fileName];
+}
+
+NSXMLDocument *loadXMLFile(NSString *fileName)
+{
+    assert(fileExists(fileName));
+    NSURL *url = [NSURL fileURLWithPath:fileName];
+    return [[NSXMLDocument alloc]
+            initWithContentsOfURL:url
+            options:NSXMLDocumentTidyXML
+            error:nil];
+
 }
 
 ZJAssetMap *parseSMPTEAssetMap(NSString *fileName)
+    // Parse the file having the specified fileName as an SMPTE asset map.
 {
     return nil; // TODO
 }
 
 ZJAssetMap *parseInteropAssetMap(NSString *fileName)
+    // Parse the file having the specified fileName as an Interop-formatted
+    // asset map.
 {
-    return nil; // TODO
+    NSXMLDocument *doc = loadXMLFile(fileName);
+    
+    if (!doc) {
+        return nil;
+    }
+    
+    NSXMLElement *root = [doc rootElement];
+    
+    NSLog(@"%@", root);
+    
+    ZJAssetMap *map = [[ZJAssetMap alloc] init];
+    
+//    map.assetMapID =
+    
+    return map; // TODO
 }
 
 static ZJAssetMap *loadAssetMap(NSString *dir)
@@ -56,15 +84,16 @@ static ZJAssetMap *loadAssetMap(NSString *dir)
     NSString *assetMapName = [dir stringByAppendingPathComponent:@"ASSETMAP.xml"];
 
     if (fileExists(assetMapName)) {
+        NSLog(@"found SMPTE asset map");
         return parseSMPTEAssetMap(assetMapName);
     }
     
     assetMapName = [dir stringByAppendingPathComponent:@"ASSETMAP"];
 
     if (fileExists(assetMapName)) {
+        NSLog(@"found Interop asset map");
         return parseInteropAssetMap(assetMapName);
     }
-    
 
     // TODO: Process each subdirectory of dir not called lost+found or RECYCLER.
 
@@ -86,14 +115,19 @@ static ZJAssetMap *loadAssetMap(NSString *dir)
         //NSLog(@"Detecting DCP: %@", arg);
         ZJAssetMap *assetMap = loadAssetMap(arg);
         (void)assetMap;
-        
     }
     
 }
 
 @end
 
-@implementation Chunk
+@implementation ZJChunk
+@end
+
+@implementation ZJAsset
+@end
+
+@implementation ZJAssetMap
 @end
 
 // TODO: Add implementations of remaining interfaces.
