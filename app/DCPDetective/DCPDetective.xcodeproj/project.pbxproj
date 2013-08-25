@@ -21,6 +21,7 @@
 		1FDED51417C989F7007D7396 /* ZJAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDED51317C989F7007D7396 /* ZJAsset.m */; };
 		1FDED51717C98A48007D7396 /* ZJAssetMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDED51617C98A48007D7396 /* ZJAssetMap.m */; };
 		1FDED51A17C9929C007D7396 /* ZJXMLUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDED51917C9929C007D7396 /* ZJXMLUtil.m */; };
+		9B86C35517C99FC100C2482E /* ZJFileUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B86C35417C99FC100C2482E /* ZJFileUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,8 @@
 		1FDED51617C98A48007D7396 /* ZJAssetMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJAssetMap.m; sourceTree = "<group>"; };
 		1FDED51817C9929C007D7396 /* ZJXMLUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJXMLUtil.h; sourceTree = "<group>"; };
 		1FDED51917C9929C007D7396 /* ZJXMLUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJXMLUtil.m; sourceTree = "<group>"; };
+		9B86C35317C99FC100C2482E /* ZJFileUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJFileUtil.h; sourceTree = "<group>"; };
+		9B86C35417C99FC100C2482E /* ZJFileUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJFileUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +133,8 @@
 				1F8E210F17C954AE00596B6D /* ZJAppDelegate.m */,
 				1FDED51817C9929C007D7396 /* ZJXMLUtil.h */,
 				1FDED51917C9929C007D7396 /* ZJXMLUtil.m */,
+				9B86C35317C99FC100C2482E /* ZJFileUtil.h */,
+				9B86C35417C99FC100C2482E /* ZJFileUtil.m */,
 				1FDED51217C989F7007D7396 /* ZJAsset.h */,
 				1FDED51317C989F7007D7396 /* ZJAsset.m */,
 				1FDED51517C98A48007D7396 /* ZJAssetMap.h */,
@@ -288,6 +293,7 @@
 				1FDED51417C989F7007D7396 /* ZJAsset.m in Sources */,
 				1FDED51717C98A48007D7396 /* ZJAssetMap.m in Sources */,
 				1FDED51A17C9929C007D7396 /* ZJXMLUtil.m in Sources */,
+				9B86C35517C99FC100C2482E /* ZJFileUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

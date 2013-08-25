@@ -10,10 +10,7 @@
 
 @interface ZJXMLUtil : NSObject
 
-// File-related methods
 
-+ (BOOL)fileExists:(NSString *)path;
-    // Returns true if a file exists at 'path', and false otherwise.
 
 + (NSXMLDocument *)loadFile:(NSString *)path;
     // Parses the XML file at 'path'.  The behavior is undefined unless the file

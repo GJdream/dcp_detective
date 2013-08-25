@@ -7,27 +7,9 @@
 //
 
 #import "ZJXMLUtil.h"
+#import "ZJFileUtil.h"
 
 @implementation ZJXMLUtil
-
-// File-related methods
-
-+ (BOOL)fileExists:(NSString *)path
-{
-    return [[NSFileManager defaultManager] fileExistsAtPath:path];
-}
-
-+ (NSXMLDocument *)loadFile:(NSString *)path
-{
-    assert([self fileExists:path]);
-    
-    NSURL *url = [NSURL fileURLWithPath:path];
-
-    return [[NSXMLDocument alloc]
-            initWithContentsOfURL:url
-            options:NSXMLDocumentTidyXML
-            error:nil];
-}
 
 // Node-related methods
 
