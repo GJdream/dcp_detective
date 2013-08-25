@@ -89,7 +89,8 @@ static ZJAssetMap *loadAssetMap(NSString *dir)
     //  parse it as Interop.
 
     NSLog(@"%@", dir);
-    NSString *assetMapName = [dir stringByAppendingPathComponent:@"ASSETMAP.xml"];
+    NSString *assetMapName =
+        [dir stringByAppendingPathComponent:@"ASSETMAP.xml"];
 
     if (fileExists(assetMapName)) {
         NSLog(@"found SMPTE asset map");
