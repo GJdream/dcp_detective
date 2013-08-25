@@ -12,7 +12,7 @@
     // This stateless utility class provides static methods for working with
     // XML documents.
 
-
+// File-related methods
 
 + (NSXMLDocument *)loadFile:(NSString *)path;
     // Parses the XML file at 'path'.  The behavior is undefined unless the file
@@ -20,11 +20,11 @@
 
 // Node-related methods
 
-+ (NSString *)stringFromChild:(NSString *)key of:(NSXMLElement *)parent;
-    // Returns the content of the child element of 'parent' having tag 'key'.
-
 + (int)intFromChild:(NSString *)key of:(NSXMLElement *)parent;
     // Returns the content of the child element of 'parent' having tag 'key',
     // parsed as an integer.
+
++ (NSString *)stringFromChild:(NSString *)key of:(NSXMLElement *)parent;
+    // Returns the content of the child element of 'parent' having tag 'key'.
 
 @end

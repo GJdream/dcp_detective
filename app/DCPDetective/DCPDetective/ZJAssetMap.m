@@ -8,6 +8,7 @@
 
 #import "ZJAssetMap.h"
 
+#import "ZJFileUtil.h"
 #import "ZJXMLUtil.h"
 
 static ZJAssetMap *loadSMPTE(ZJAssetMap *result, NSString *fileName)
@@ -51,7 +52,7 @@ static ZJAssetMap *loadInterop(ZJAssetMap *result, NSString *path)
     NSString *assetMapName =
         [path stringByAppendingPathComponent:@"ASSETMAP.xml"];
 
-    if ([ZJXMLUtil fileExists:assetMapName]) {
+    if ([ZJFileUtil fileExists:assetMapName]) {
         return loadSMPTE([ZJAssetMap new], assetMapName);
     }
 
@@ -60,7 +61,7 @@ static ZJAssetMap *loadInterop(ZJAssetMap *result, NSString *path)
 
     assetMapName = [path stringByAppendingPathComponent:@"ASSETMAP"];
 
-    if ([ZJXMLUtil fileExists:assetMapName]) {
+    if ([ZJFileUtil fileExists:assetMapName]) {
         return loadInterop([ZJAssetMap new], assetMapName);
     }
 

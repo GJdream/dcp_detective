@@ -11,7 +11,30 @@
 
 @implementation ZJXMLUtil
 
+// File-related methods
+
++ (NSXMLDocument *)loadFile:(NSString *)path
+{
+    NSURL *url = [NSURL fileURLWithPath:path];
+
+    return [[NSXMLDocument alloc]
+            initWithContentsOfURL:url
+            options:NSXMLDocumentTidyXML
+            error:nil];
+}
+
 // Node-related methods
+
++ (int)intFromChild:(NSString *)key of:(NSXMLElement *)parent
+{
+    int result = 0;
+
+    for (NSXMLElement *child in [parent elementsForName:key]) {
+        result = [[child stringValue] intValue];
+    }
+
+    return result;
+}
 
 + (NSString *)stringFromChild:(NSString *)key of:(NSXMLElement *)parent
 {
@@ -24,15 +47,5 @@
     return result;
 }
 
-+ (int)intFromChild:(NSString *)key of:(NSXMLElement *)parent
-{
-    int result = 0;
-
-    for (NSXMLElement *child in [parent elementsForName:key]) {
-        result = [[child stringValue] intValue];
-    }
-
-    return result;
-}
 
 @end

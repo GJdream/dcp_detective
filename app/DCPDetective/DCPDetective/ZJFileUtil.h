@@ -10,9 +10,7 @@
 
 @interface ZJFileUtil : NSObject
 
-// File-related methods
-
 + (BOOL)fileExists:(NSString *)path;
-// Returns true if a file exists at 'path', and false otherwise.
+    // Returns true if a file exists at 'path', and false otherwise.
 
 @end

@@ -17,19 +17,6 @@
     return [[NSFileManager defaultManager] fileExistsAtPath:path];
 }
 
-+ (NSXMLDocument *)loadFile:(NSString *)path
-{
-    assert([self fileExists:path]);
-
-    NSURL *url = [NSURL fileURLWithPath:path];
-
-    return [[NSXMLDocument alloc]
-            initWithContentsOfURL:url
-            options:NSXMLDocumentTidyXML
-            error:nil];
-}
-
-
 @end
 
 

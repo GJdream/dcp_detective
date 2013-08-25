@@ -25,6 +25,8 @@
 
     for (NSString *path in args) {
         ZJAssetMap *assetMap = [ZJAssetMap assetMapFromDCP:path];
+
+        // TODO
         
         NSLog(@"%@", assetMap);
     }
