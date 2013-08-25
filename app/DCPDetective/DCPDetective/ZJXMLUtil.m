@@ -27,13 +27,7 @@
 
 + (int)intFromChild:(NSString *)key of:(NSXMLElement *)parent
 {
-    int result = 0;
-
-    for (NSXMLElement *child in [parent elementsForName:key]) {
-        result = [[child stringValue] intValue];
-    }
-
-    return result;
+    return [[self stringFromChild:key of:parent] intValue];
 }
 
 + (NSString *)stringFromChild:(NSString *)key of:(NSXMLElement *)parent
