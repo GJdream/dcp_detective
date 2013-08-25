@@ -35,7 +35,7 @@ static ZJAssetMap *loadInterop(ZJAssetMap *result, NSString *path)
     NSXMLElement *root = [doc rootElement];
 
     map.uuid = [ZJXMLUtil stringFromChild:@"Id" of:root];
-    map.volumeCount = [ZJXMLUtil intFromChild:@"VolumeControl" of:root];
+    map.volumeCount = [ZJXMLUtil intFromChild:@"VolumeCount" of:root];
 
     // TODO
     
