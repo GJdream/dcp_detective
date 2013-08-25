@@ -25,7 +25,13 @@
 
 // METHODS
 
++ (id)assetMapFromDCP:(NSString *)path;
+    // Returns an object representing the asset map in directory 'dir', or nil
+    // if no asset map exists, or the asset map cannot be parsed.  Parses the
+    // asset map as SMPTE format if called ASSETMAP.xml, or in Interop format if
+    // called ASSETMAP (with no extension).
+
 - (NSString *)description;
-    // Returns a string representing this object.
+    // Returns a human-readable string representing this object.
 
 @end

@@ -20,6 +20,7 @@
 		1FDED51117C988B3007D7396 /* ZJChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDED51017C988B3007D7396 /* ZJChunk.m */; };
 		1FDED51417C989F7007D7396 /* ZJAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDED51317C989F7007D7396 /* ZJAsset.m */; };
 		1FDED51717C98A48007D7396 /* ZJAssetMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDED51617C98A48007D7396 /* ZJAssetMap.m */; };
+		1FDED51A17C9929C007D7396 /* ZJXMLUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDED51917C9929C007D7396 /* ZJXMLUtil.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,8 @@
 		1FDED51317C989F7007D7396 /* ZJAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJAsset.m; sourceTree = "<group>"; };
 		1FDED51517C98A48007D7396 /* ZJAssetMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAssetMap.h; sourceTree = "<group>"; };
 		1FDED51617C98A48007D7396 /* ZJAssetMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJAssetMap.m; sourceTree = "<group>"; };
+		1FDED51817C9929C007D7396 /* ZJXMLUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJXMLUtil.h; sourceTree = "<group>"; };
+		1FDED51917C9929C007D7396 /* ZJXMLUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJXMLUtil.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +128,8 @@
 			children = (
 				1F8E210E17C954AE00596B6D /* ZJAppDelegate.h */,
 				1F8E210F17C954AE00596B6D /* ZJAppDelegate.m */,
+				1FDED51817C9929C007D7396 /* ZJXMLUtil.h */,
+				1FDED51917C9929C007D7396 /* ZJXMLUtil.m */,
 				1FDED51217C989F7007D7396 /* ZJAsset.h */,
 				1FDED51317C989F7007D7396 /* ZJAsset.m */,
 				1FDED51517C98A48007D7396 /* ZJAssetMap.h */,
@@ -282,6 +287,7 @@
 				1FDED51117C988B3007D7396 /* ZJChunk.m in Sources */,
 				1FDED51417C989F7007D7396 /* ZJAsset.m in Sources */,
 				1FDED51717C98A48007D7396 /* ZJAssetMap.m in Sources */,
+				1FDED51A17C9929C007D7396 /* ZJXMLUtil.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
