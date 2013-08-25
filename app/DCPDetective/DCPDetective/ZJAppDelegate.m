@@ -16,12 +16,11 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // For each command-line argument (except the first, which is just the name
-    // of this executable), find the name of the PKL file.
+    // For each DCP directory specified on the command line, load the DCP's
+    // asset map.  Skip argument 0, which is just the program name.
 
     NSMutableArray *args =
         [[[NSProcessInfo processInfo] arguments] mutableCopy];
-
     [args removeObjectAtIndex:0];
 
     for (NSString *path in args) {
