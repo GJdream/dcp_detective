@@ -124,6 +124,10 @@ static ZJAssetMap *loadAssetMap(NSString *dir)
         
         NSLog(@"%@", assetMap);
     }
+
+    // Exit the application.
+
+    [[NSApplication sharedApplication] terminate:nil];
 }
 
 @end
