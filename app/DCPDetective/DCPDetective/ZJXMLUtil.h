@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface ZJXMLUtil : NSObject
+    // This stateless utility class provides static methods for working with
+    // XML documents.
 
 
 
