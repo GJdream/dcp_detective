@@ -12,7 +12,7 @@
     // Each object of this class represents part of a Digital Cinema Package
     // (DCP).
 
-@property NSString *assetID;    // UUID of this asset
+@property NSString *uuid;       // UUID of this asset
 @property NSArray *chunkList;   // chunks comprising this asset
 @property BOOL packingList;     // true if this asset is a packing list
 

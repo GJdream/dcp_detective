@@ -71,7 +71,7 @@ static ZJAssetMap *parseInteropAssetMap(NSString *fileName)
 
     NSXMLElement *root = [doc rootElement];
 
-    map.assetMapID = getString(root, @"Id");
+    map.uuid = getString(root, @"Id");
     map.volumeCount = getInt(root, @"VolumeCount");
 
     return map; // TODO

@@ -13,7 +13,7 @@
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"\n\tId = %@\n\tVolumeCount = %d",
-            self.assetMapID,
+            self.uuid,
             self.volumeCount];
 }
 
