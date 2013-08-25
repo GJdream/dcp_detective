@@ -13,7 +13,7 @@
 static ZJAssetMap *loadSMPTE(ZJAssetMap *result, NSString *fileName)
     // Parses the file having the specified fileName as an SMPTE asset map.
 {
-    NSLog(@"Warning: parseSMPTEAssetMap has not yet been implemented.");
+    NSLog(@"Warning: SMPTE asset maps are not yet been supported.");
 
     // TODO
     
