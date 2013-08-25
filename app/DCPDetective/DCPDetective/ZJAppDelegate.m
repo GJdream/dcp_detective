@@ -6,34 +6,11 @@
 //  Copyright (c) 2013 Unbuggy Software LLC. All rights reserved.
 //
 
+#import "ZJAsset.h"
+#import "ZJAssetMap.h"
+#import "ZJChunk.h"
+
 #import "ZJAppDelegate.h"
-
-//TODO create separate files for implementation classes
-
-// CLASS INTERFACES
-
-@interface ZJChunk : NSObject
-@property NSString *path;
-@property int       volumeIndex;
-@end
-
-@interface ZJAsset : NSObject
-@property NSString *assetID;
-@property NSArray  *chunkList;
-@property BOOL      packingList;
-@end
-
-@interface ZJAssetMap : NSObject
-@property NSString *assetMapID;
-@property int volumeCount;
-@property NSArray *assetList;
-
-// TODO: Add remaining AssetMap properties.
-
-- (NSString *)description;
-@end
-
-// STATIC FUNCTIONS
 
 static BOOL fileExists(NSString *fileName)
 {
@@ -131,8 +108,6 @@ static ZJAssetMap *loadAssetMap(NSString *dir)
     return nil;
 }
 
-// CLASS IMPLEMENTATIONS
-
 @implementation ZJAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -152,22 +127,3 @@ static ZJAssetMap *loadAssetMap(NSString *dir)
 }
 
 @end
-
-@implementation ZJChunk
-@end
-
-@implementation ZJAsset
-@end
-
-@implementation ZJAssetMap
-
-- (NSString *)description
-{
-    return [NSString stringWithFormat:@"\n\tId = %@\n\tVolumeCount = %d",
-            self.assetMapID,
-            self.volumeCount];
-}
-
-@end
-
-// TODO: Add implementations of remaining interfaces.

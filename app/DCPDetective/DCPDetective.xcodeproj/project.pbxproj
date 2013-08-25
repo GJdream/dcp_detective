@@ -17,6 +17,9 @@
 		1F8E211C17C954AE00596B6D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8E20FC17C954AE00596B6D /* Cocoa.framework */; };
 		1F8E212417C954AE00596B6D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F8E212217C954AE00596B6D /* InfoPlist.strings */; };
 		1F8E212717C954AE00596B6D /* DCPDetectiveTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E212617C954AE00596B6D /* DCPDetectiveTests.m */; };
+		1FDED51117C988B3007D7396 /* ZJChunk.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDED51017C988B3007D7396 /* ZJChunk.m */; };
+		1FDED51417C989F7007D7396 /* ZJAsset.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDED51317C989F7007D7396 /* ZJAsset.m */; };
+		1FDED51717C98A48007D7396 /* ZJAssetMap.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FDED51617C98A48007D7396 /* ZJAssetMap.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,12 @@
 		1F8E212317C954AE00596B6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F8E212517C954AE00596B6D /* DCPDetectiveTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DCPDetectiveTests.h; sourceTree = "<group>"; };
 		1F8E212617C954AE00596B6D /* DCPDetectiveTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DCPDetectiveTests.m; sourceTree = "<group>"; };
+		1FDED50F17C988B3007D7396 /* ZJChunk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJChunk.h; sourceTree = "<group>"; };
+		1FDED51017C988B3007D7396 /* ZJChunk.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJChunk.m; sourceTree = "<group>"; };
+		1FDED51217C989F7007D7396 /* ZJAsset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAsset.h; sourceTree = "<group>"; };
+		1FDED51317C989F7007D7396 /* ZJAsset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJAsset.m; sourceTree = "<group>"; };
+		1FDED51517C98A48007D7396 /* ZJAssetMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJAssetMap.h; sourceTree = "<group>"; };
+		1FDED51617C98A48007D7396 /* ZJAssetMap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJAssetMap.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +125,12 @@
 			children = (
 				1F8E210E17C954AE00596B6D /* ZJAppDelegate.h */,
 				1F8E210F17C954AE00596B6D /* ZJAppDelegate.m */,
+				1FDED51217C989F7007D7396 /* ZJAsset.h */,
+				1FDED51317C989F7007D7396 /* ZJAsset.m */,
+				1FDED51517C98A48007D7396 /* ZJAssetMap.h */,
+				1FDED51617C98A48007D7396 /* ZJAssetMap.m */,
+				1FDED50F17C988B3007D7396 /* ZJChunk.h */,
+				1FDED51017C988B3007D7396 /* ZJChunk.m */,
 				1F8E211117C954AE00596B6D /* MainMenu.xib */,
 				1F8E210317C954AE00596B6D /* Supporting Files */,
 			);
@@ -264,6 +279,9 @@
 			files = (
 				1F8E210917C954AE00596B6D /* main.m in Sources */,
 				1F8E211017C954AE00596B6D /* ZJAppDelegate.m in Sources */,
+				1FDED51117C988B3007D7396 /* ZJChunk.m in Sources */,
+				1FDED51417C989F7007D7396 /* ZJAsset.m in Sources */,
+				1FDED51717C98A48007D7396 /* ZJAssetMap.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,6 +471,7 @@
 				1F8E212C17C954AE00596B6D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1F8E212D17C954AE00596B6D /* Build configuration list for PBXNativeTarget "DCPDetectiveTests" */ = {
 			isa = XCConfigurationList;
@@ -461,6 +480,7 @@
 				1F8E212F17C954AE00596B6D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
