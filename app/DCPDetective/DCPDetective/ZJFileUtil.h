@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface ZJFileUtil : NSObject
 
 + (BOOL)fileExists:(NSString *)path;
     // Returns true if a file exists at 'path', and false otherwise.
+
++ (NSData *)sha1:(NSString *) path;
 
 @end
