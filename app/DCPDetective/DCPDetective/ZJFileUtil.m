@@ -23,6 +23,7 @@
     NSData *data = [NSData dataWithContentsOfFile:path];
 
     if (!data) {
+        NSLog(@"Warning: could not read file %@", path);
         return nil;
     }
 
@@ -36,6 +37,7 @@
     unsigned char digest[CC_SHA1_DIGEST_LENGTH];
 
     if (!CC_SHA1([data bytes], (CC_LONG)[data length], digest)) {
+        NSLog(@"Warning: could not compute SHA-1 of file %@", path);
         return nil;
     }
 
