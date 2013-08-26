@@ -32,13 +32,14 @@
 
 + (NSString *)stringFromChild:(NSString *)key of:(NSXMLElement *)parent
 {
-    NSString *result = nil;
+    NSArray *children = [parent elementsForName:key];
 
-    for (NSXMLElement *child in [parent elementsForName:key]) {
-        result = [child stringValue];
+    if ([children count] != 1) {
+        NSLog(@"Warning: did not find exactly one value for key %@", key);
+        return nil;
     }
 
-    return result;
+    return [[children objectAtIndex:0] stringValue];
 }
 
 
