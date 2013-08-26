@@ -23,16 +23,14 @@
     NSMutableArray *args =
         [[[NSProcessInfo processInfo] arguments] mutableCopy];
     [args removeObjectAtIndex:0];
-    NSLog(@"%@",[ZJFileUtil sha1:@"/Users/zacharymanning/Downloads/public-AD-ACT_OF_KILLING_060313_TRL_TIFF_S-archive-24-Aug-2013/CPL_cddc222e-c5ea-d34d-a9dc-0c0f3086d965.xml"]);
-    
 
     for (NSString *path in args) {
         ZJAssetMap *assetMap = [ZJAssetMap assetMapFromDCP:path];
 
         // TODO
         
-        NSLog(@"%@", assetMap);
-        NSLog(@"%@", [ZJFileUtil sha1:path]);
+        NSLog(@"Asset Map: %@", assetMap);
+        NSLog(@"SHA-1: %@", [ZJFileUtil sha1:path]);
     }
 
     // Exit the application.
