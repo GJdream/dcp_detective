@@ -14,6 +14,7 @@
 + (BOOL)fileExists:(NSString *)path;
     // Returns true if a file exists at 'path', and false otherwise.
 
-+ (NSData *)sha1:(NSString *) path;
++ (NSData *)sha1:(NSString *)path;
+    // Returns the SHA-1 hash value of the contents of the file at 'path'.
 
 @end
