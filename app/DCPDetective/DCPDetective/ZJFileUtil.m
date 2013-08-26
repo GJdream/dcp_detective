@@ -29,7 +29,7 @@
     // Check that the file size does not exceed the range of the input length
     // parameter to CC_SHA1.
 
-    assert([data length] < 2000000000ULL);
+    assert((CC_LONG)[data length] == [data length]);
 
     // Compute the SHA-1 value as a sequence of bytes.
 
