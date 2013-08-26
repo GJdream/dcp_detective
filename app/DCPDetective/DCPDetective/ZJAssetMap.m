@@ -14,7 +14,7 @@
 static ZJAssetMap *loadSMPTE(ZJAssetMap *result, NSString *fileName)
     // Parses the file having the specified fileName as an SMPTE asset map.
 {
-    NSLog(@"Warning: SMPTE asset maps are not yet been supported.");
+    NSLog(@"Warning: SMPTE asset maps are not yet supported.");
 
     // TODO
     
@@ -29,6 +29,7 @@ static ZJAssetMap *loadInterop(ZJAssetMap *result, NSString *path)
     NSXMLDocument *doc = [ZJXMLUtil loadFile:path];
 
     if (!doc) {
+        NSLog(@"Warning: could not load asset map file: %@", path);
         return nil;
     }
 
@@ -47,7 +48,7 @@ static ZJAssetMap *loadInterop(ZJAssetMap *result, NSString *path)
 + (id)assetMapFromDCP:(NSString *)path
 {
     // If dir/ASSETMAP.xml exists,
-    //  parse it as SMPTE;
+    //  parse it as SMPTE.
 
     NSString *assetMapName =
         [path stringByAppendingPathComponent:@"ASSETMAP.xml"];
@@ -56,7 +57,7 @@ static ZJAssetMap *loadInterop(ZJAssetMap *result, NSString *path)
         return loadSMPTE([ZJAssetMap new], assetMapName);
     }
 
-    // else, if ASSETMAP exists,
+    // Else, if ASSETMAP exists,
     //  parse it as Interop.
 
     assetMapName = [path stringByAppendingPathComponent:@"ASSETMAP"];
@@ -66,7 +67,8 @@ static ZJAssetMap *loadInterop(ZJAssetMap *result, NSString *path)
     }
 
     // TODO: Process each subdirectory of dir not called lost+found or RECYCLER.
-    
+
+    NSLog(@"Warning: could not find asset map for DCP: %@", path);
     return nil;
 }
 
