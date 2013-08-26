@@ -22,9 +22,18 @@
 + (NSData *)sha1:(NSString *)path
 {
     unsigned char digest[CC_SHA1_DIGEST_LENGTH];
+    
     NSData *data = [NSData dataWithContentsOfFile:path];
+
+    if (!data) {
+        return nil;
+    }
+
     assert([data length] < 2000000000ULL);
-    CC_SHA1([data bytes], (CC_LONG)[data length], digest);
+
+    if (!CC_SHA1([data bytes], (CC_LONG)[data length], digest)) {
+        return nil;
+    }
 
     return [NSData dataWithBytes:digest length:CC_SHA1_DIGEST_LENGTH];
 }
