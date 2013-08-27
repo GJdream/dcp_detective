@@ -25,12 +25,7 @@
 
 // Node-related methods
 
-+ (int)intFromChild:(NSString *)key of:(NSXMLElement *)parent
-{
-    return [self stringFromChild:key of:parent].intValue;
-}
-
-+ (NSString *)stringFromChild:(NSString *)key of:(NSXMLElement *)parent
++ (NSXMLElement *)child:(NSString *)key of:(NSXMLElement *)parent
 {
     NSArray *children = [parent elementsForName:key];
 
@@ -39,7 +34,17 @@
         return nil;
     }
 
-    return [[children objectAtIndex:0] stringValue];
+    return [children objectAtIndex:0];
+}
+
++ (int)intFromChild:(NSString *)key of:(NSXMLElement *)parent
+{
+    return [self stringFromChild:key of:parent].intValue;
+}
+
++ (NSString *)stringFromChild:(NSString *)key of:(NSXMLElement *)parent
+{
+    return [[self child:key of:parent] stringValue];
 }
 
 

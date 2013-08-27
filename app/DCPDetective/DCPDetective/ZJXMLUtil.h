@@ -20,6 +20,10 @@
 
 // Node-related methods
 
++ (NSXMLElement *)child:(NSString *)key of:(NSXMLElement *)parent;
+    // Returns the child element of 'parent' having tag 'key'.  The behavior is
+    // undefined unless 'parent' has exactly one child for tag 'key'.
+
 + (int)intFromChild:(NSString *)key of:(NSXMLElement *)parent;
     // Returns the content of the child element of 'parent' having tag 'key',
     // parsed as an integer.
