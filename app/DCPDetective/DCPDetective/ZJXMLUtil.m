@@ -27,14 +27,14 @@
 
 + (int)intFromChild:(NSString *)key of:(NSXMLElement *)parent
 {
-    return [[self stringFromChild:key of:parent] intValue];
+    return [self stringFromChild:key of:parent].intValue;
 }
 
 + (NSString *)stringFromChild:(NSString *)key of:(NSXMLElement *)parent
 {
     NSArray *children = [parent elementsForName:key];
 
-    if ([children count] != 1) {
+    if (children.count != 1) {
         NSLog(@"Warning: did not find exactly one value for key %@", key);
         return nil;
     }
