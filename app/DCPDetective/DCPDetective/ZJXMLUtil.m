@@ -37,12 +37,12 @@
     return [children objectAtIndex:0];
 }
 
-+ (int)intFromChild:(NSString *)key of:(NSXMLElement *)parent
++ (int)childInt:(NSString *)key of:(NSXMLElement *)parent
 {
-    return [self stringFromChild:key of:parent].intValue;
+    return [self childString:key of:parent].intValue;
 }
 
-+ (NSString *)stringFromChild:(NSString *)key of:(NSXMLElement *)parent
++ (NSString *)childString:(NSString *)key of:(NSXMLElement *)parent
 {
     return [[self child:key of:parent] stringValue];
 }

@@ -9,6 +9,7 @@
 #import "ZJAssetMap.h"
 
 #import "ZJFileUtil.h"
+#import "ZJXMLRichElement.h"
 #import "ZJXMLUtil.h"
 
 static ZJAssetMap *loadSMPTE(ZJAssetMap *result, NSString *fileName)
@@ -17,7 +18,7 @@ static ZJAssetMap *loadSMPTE(ZJAssetMap *result, NSString *fileName)
     NSLog(@"Warning: SMPTE asset maps are not yet supported.");
 
     // TODO
-    
+
     return nil;
 }
 
@@ -33,16 +34,17 @@ static ZJAssetMap *loadInterop(ZJAssetMap *result, NSString *path)
         return nil;
     }
 
-    NSXMLElement *root = [doc rootElement];
+    ZJXMLRichElement *root =
+        [ZJXMLRichElement elementWithElement:[doc rootElement]];
 
-    map.uuid        = [ZJXMLUtil stringFromChild:@"Id"          of:root];
-    map.volumeCount = [ZJXMLUtil intFromChild:@"VolumeCount"    of:root];
-    map.issueDate   = [ZJXMLUtil stringFromChild:@"IssueDate"   of:root];
-    map.issuer      = [ZJXMLUtil stringFromChild:@"Issuer"      of:root];
-    map.creator     = [ZJXMLUtil stringFromChild:@"Creator"     of:root];
+    map.uuid        = [root childString:@"Id"];
+    map.volumeCount = [root childInt:@"VolumeCount"];
+    map.issueDate   = [root childString:@"IssueDate"];
+    map.issuer      = [root childString:@"Issuer"];
+    map.creator     = [root childString:@"Creator"];
 
     // TODO
-    
+
     return map;
 }
 
