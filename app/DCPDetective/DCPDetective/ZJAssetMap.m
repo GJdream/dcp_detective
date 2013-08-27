@@ -35,8 +35,11 @@ static ZJAssetMap *loadInterop(ZJAssetMap *result, NSString *path)
 
     NSXMLElement *root = [doc rootElement];
 
-    map.uuid = [ZJXMLUtil stringFromChild:@"Id" of:root];
-    map.volumeCount = [ZJXMLUtil intFromChild:@"VolumeCount" of:root];
+    map.uuid        = [ZJXMLUtil stringFromChild:@"Id"          of:root];
+    map.volumeCount = [ZJXMLUtil intFromChild:@"VolumeCount"    of:root];
+    map.issueDate   = [ZJXMLUtil stringFromChild:@"IssueDate"   of:root];
+    map.issuer      = [ZJXMLUtil stringFromChild:@"Issuer"      of:root];
+    map.creator     = [ZJXMLUtil stringFromChild:@"Creator"     of:root];
 
     // TODO
     
@@ -74,9 +77,20 @@ static ZJAssetMap *loadInterop(ZJAssetMap *result, NSString *path)
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:@"\n\tId = %@\n\tVolumeCount = %d",
+    return [NSString
+            stringWithFormat:
+                @"\n\tId          = %@"
+                 "\n\tVolumeCount = %d"
+                 "\n\tIssueDate   = %@"
+                 "\n\tIssuer      = %@"
+                 "\n\tCreator     = %@",
             self.uuid,
-            self.volumeCount];
+            self.volumeCount,
+            self.issueDate,
+            self.issuer,
+            self.creator];
+
+    // TODO: Print asset list.
 }
 
 @end
