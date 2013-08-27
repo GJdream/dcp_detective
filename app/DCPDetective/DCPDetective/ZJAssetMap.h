@@ -14,16 +14,12 @@
     //
     // TODO: Add remaining AssetMap properties.
 
-// DATA
-
 @property NSString *uuid;       // UUID of this map
 @property int volumeCount;      // number of disks storing assets
 @property NSString *issueDate;  // when this DCP was issued
 @property NSString *issuer;     // who issued this DCP
 @property NSString *creator;    // application used to create this DCP
 @property NSArray *assetList;   // assets comprising this DCP
-
-// METHODS
 
 + (id)assetMapFromDCP:(NSString *)path;
     // Returns an object representing the asset map in directory 'dir', or nil

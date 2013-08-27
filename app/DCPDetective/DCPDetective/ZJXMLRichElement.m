@@ -8,37 +8,80 @@
 
 #import "ZJXMLRichElement.h"
 
-#import "ZJXMLUtil.h"
-
 @implementation ZJXMLRichElement
+
++ (ZJXMLRichElement *)elementWithContentsOfFile:(NSString *)path
+{
+    NSURL *url = [NSURL fileURLWithPath:path];
+
+    NSXMLDocument *doc = [[NSXMLDocument alloc]
+                          initWithContentsOfURL:url
+                          options:NSXMLDocumentTidyXML
+                          error:nil];
+
+    if (!doc) {
+        NSLog(@"Warning: could not load XML file: %@", path);
+        return nil;
+    }
+
+    return [self elementWithElement:doc.rootElement];
+}
 
 + (ZJXMLRichElement *)elementWithElement:(NSXMLElement *)element
 {
-    return [[ZJXMLRichElement alloc] initWithElement:element];
+    ZJXMLRichElement *result = [[ZJXMLRichElement alloc] init];
+
+    result.element = element;
+    
+    return result;
 }
 
-- (ZJXMLRichElement *)initWithElement:(NSXMLElement *)element
+- (ZJXMLRichElement *)child:(NSString *)key
 {
-    if ((self = [super init])) {
-        _element = element;
+    NSArray *children = [self.element elementsForName:key];
+
+    if (children.count != 1) {
+        NSLog(@"Warning: did not find exactly one value for key %@", key);
+        return nil;
     }
 
-    return self;
+    return [ZJXMLRichElement elementWithElement:[children objectAtIndex:0]];
 }
 
-- (NSXMLElement *)child:(NSString *)key
+- (NSUInteger)childCount
 {
-    return [ZJXMLUtil child:key of:self.element];
+    return self.element.childCount;
 }
 
 - (int)childInt:(NSString *)key
 {
-    return [ZJXMLUtil childInt:key of:self.element];
+    return [self childString:key].intValue;
+}
+
+- (NSArray *)children
+{
+    NSMutableArray *result = [NSMutableArray arrayWithCapacity:self.childCount];
+
+    for (NSXMLElement *child in self.element.children) {
+        [result addObject:[ZJXMLRichElement elementWithElement:child]];
+    }
+
+    return result;
 }
 
 - (NSString *)childString:(NSString *)key
 {
-    return [ZJXMLUtil childString:key of:self.element];
+    return [self child:key].element.stringValue;
+}
+
+- (NSString *)childStringOrEmpty:(NSString *)key
+{
+    return [self hasChild:key] ? [self childString:key] : @"";
+}
+
+- (BOOL)hasChild:(NSString *)key
+{
+    return [self.element elementsForName:key].count != 0;
 }
 
 @end

@@ -16,21 +16,35 @@
 
 @property NSXMLElement *element;  // the wrapped XML element
 
++ (ZJXMLRichElement *)elementWithContentsOfFile:(NSString *)path;
+    // Returns a rich element representing the contents of the file at 'path'.
+
 + (ZJXMLRichElement *)elementWithElement:(NSXMLElement *)element;
     // Returns a rich element wrapping the specified 'element'.
 
-- (ZJXMLRichElement *)initWithElement:(NSXMLElement *)element;
-    // Initializes the receiver to wrap the specified 'element'.
-
-- (NSXMLElement *)child:(NSString *)key;
+- (ZJXMLRichElement *)child:(NSString *)key;
     // Returns the child element having tag 'key'.  The behavior is undefined
     // unless 'parent' has exactly one child for tag 'key'.
+
+- (NSUInteger)childCount;
+    // Returns the number of children in the wrapped element.
 
 - (int)childInt:(NSString *)key;
     // Returns the content of the child element having tag 'key', parsed as an
     // integer.
 
+- (NSArray *)children;
+    // Returns an array of ZJXMLRichElement objects wrapping the children of
+    // the wrapped NSXMLElement.
+
 - (NSString *)childString:(NSString *)key;
     // Returns the content of the child element having tag 'key'.
+
+- (NSString *)childStringOrEmpty:(NSString *)key;
+    // Returns the content of the child element having tag 'key', or an empty
+    // string if no child has tag 'key'.
+
+- (BOOL)hasChild:(NSString *)key;
+    // Returns true if the receiver has a child element for tag 'key'.
 
 @end

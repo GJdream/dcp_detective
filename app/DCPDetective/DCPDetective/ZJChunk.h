@@ -12,7 +12,16 @@
     // Each object of this class represents all or part of one _asset_.  Each
     // Digital Cinema Package (DCP) is in turn comprised of assets.
 
-@property NSString *path;   // path to the file containing this chunk
-@property int volumeIndex;  // ID of the disk on which this chunk is stored
+@property NSString *originalFileName;   // file from which chunk was derived
+@property NSString *path;               // file containing this chunk
+@property int volumeIndex;              // disk on which chunk is stored
+
++ (ZJChunk *)chunkWithOriginalFileName:(NSString *)name
+                                  path:(NSString *)path
+                           volumeIndex:(int)index;
+    // Returns a trunk having the specified 'name', 'path', and 'index'.
+
+- (NSString *)description;
+    // Returns a human-readable string describing this object;
 
 @end

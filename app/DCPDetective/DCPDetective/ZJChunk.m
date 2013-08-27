@@ -10,5 +10,29 @@
 
 @implementation ZJChunk
 
++ (ZJChunk *)chunkWithOriginalFileName:(NSString *)name
+                                  path:(NSString *)path
+                           volumeIndex:(int)index
+{
+    ZJChunk *result = [ZJChunk new];
+
+    result.originalFileName = name;
+    result.path = path;
+    result.volumeIndex = index;
+
+    return result;
+}
+
+- (NSString *)description
+{
+    return [NSString stringWithFormat:
+            @"\n\tOriginalFileName: %@"
+             "\n\tPath:             %@"
+             "\n\tVolumeIndex       %d",
+            self.originalFileName,
+            self.path,
+            self.volumeIndex];
+}
+
 
 @end
