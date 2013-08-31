@@ -61,7 +61,8 @@ static ZJAsset *parseAsset(ZJXMLRichElement *element)
 
     BOOL packingList =
         [element hasChild:@"PackingList"]
-    && [[element childString:@"PackingList"] caseInsensitiveCompare:@"true"];
+    && [[element childString:@"PackingList"]
+        caseInsensitiveCompare:@"true"] == NSOrderedSame;
 
     return [ZJAsset assetWithUUID:[element childString:@"Id"]
                    annotationText:annotationText
