@@ -155,8 +155,6 @@ static ZJAssetMap *loadInterop(ZJAssetMap *result, NSString *path)
             self.assetList.count,
             self.assetList.count == 1 ? "" : "s",
             assets];
-
-    // TODO: Format asset list.
 }
 
 @end
