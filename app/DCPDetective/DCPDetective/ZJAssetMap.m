@@ -141,12 +141,12 @@ static ZJAssetMap *loadInterop(ZJAssetMap *result, NSString *path)
     }
 
     return [NSString stringWithFormat:@"ZJAssetMap"
-            "\n\tId          = %@"
-            "\n\tVolumeCount = %d"
-            "\n\tIssueDate   = %@"
-            "\n\tIssuer      = %@"
-            "\n\tCreator     = %@"
-            "\n\tAssetList   = (%lu asset%s)%@",
+            "\n\tId:          %@"
+            "\n\tVolumeCount: %d"
+            "\n\tIssueDate:   %@"
+            "\n\tIssuer:      %@"
+            "\n\tCreator:     %@"
+            "\n\tAssetList:   (%lu asset%s)%@",
             self.uuid,
             self.volumeCount,
             self.issueDate,
