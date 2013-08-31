@@ -29,7 +29,7 @@
 
         // TODO
         
-        NSLog(@"Asset Map: %@", assetMap);
+        NSLog(@"\n%@", assetMap);
 //        NSLog(@"SHA-1: %@",
 //              [ZJFileUtil
 //               sha1:[path stringByAppendingPathComponent:@"ASSETMAP"]]);

@@ -8,6 +8,8 @@
 
 #import "ZJAsset.h"
 
+#import "ZJChunk.h"
+
 @implementation ZJAsset
 
 + (ZJAsset *)assetWithUUID:(NSString *)uuid
@@ -27,14 +29,22 @@
 
 - (NSString *)description
 {
+    NSMutableString *chunks = [NSMutableString new];
+
+    for (ZJChunk *chunk in self.chunkList) {
+        [chunks appendFormat:@"\n%@", chunk.description];
+    }
+
     return [NSString stringWithFormat:@"ZJAsset:"
             "\n\tuuid:           %@"
             "\n\tannotationText: %@"
-            "\n\tchunkList:      [%lu chunks]"
+            "\n\tchunkList:      (%lu chunk%s)%@"
             "\n\tpackingList:    %@",
         self.uuid,
         self.annotationText,
-        (unsigned long)self.chunkList.count,
+        self.chunkList.count,
+        self.chunkList.count == 1 ? "" : "s",
+        chunks,
         self.packingList ? @"true" : @"false"];
 }
 

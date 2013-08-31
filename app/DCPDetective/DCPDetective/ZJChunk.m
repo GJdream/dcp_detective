@@ -25,10 +25,10 @@
 
 - (NSString *)description
 {
-    return [NSString stringWithFormat:
-            @"\n\tOriginalFileName: %@"
-             "\n\tPath:             %@"
-             "\n\tVolumeIndex       %d",
+    return [NSString stringWithFormat:@"ZJChunk:"
+                "\n\tOriginalFileName: %@"
+                "\n\tPath:             %@"
+                "\n\tVolumeIndex       %d",
             self.originalFileName,
             self.path,
             self.volumeIndex];

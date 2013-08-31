@@ -134,19 +134,27 @@ static ZJAssetMap *loadInterop(ZJAssetMap *result, NSString *path)
 
 - (NSString *)description
 {
+    NSMutableString *assets = [NSMutableString new];
+
+    for (ZJAsset *asset in self.assetList) {
+        [assets appendFormat:@"\n%@", asset.description];
+    }
+
     return [NSString stringWithFormat:@"ZJAssetMap"
             "\n\tId          = %@"
             "\n\tVolumeCount = %d"
             "\n\tIssueDate   = %@"
             "\n\tIssuer      = %@"
             "\n\tCreator     = %@"
-            "\n\tAssetList   = [%lu Assets]",
+            "\n\tAssetList   = (%lu asset%s)%@",
             self.uuid,
             self.volumeCount,
             self.issueDate,
             self.issuer,
             self.creator,
-            (unsigned long)self.assetList.count];
+            self.assetList.count,
+            self.assetList.count == 1 ? "" : "s",
+            assets];
 
     // TODO: Format asset list.
 }
