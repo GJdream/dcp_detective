@@ -100,8 +100,6 @@ static ZJAssetMap *loadInterop(ZJAssetMap *result, NSString *path)
     map.creator     = [root childString:@"Creator"];
     map.assetList   = parseAssetList([root child:@"AssetList"]);
 
-    // TODO
-
     return map;
 }
 
@@ -150,7 +148,7 @@ static ZJAssetMap *loadInterop(ZJAssetMap *result, NSString *path)
             self.creator,
             (unsigned long)self.assetList.count];
 
-    // TODO: Print asset list.
+    // TODO: Format asset list.
 }
 
 @end
