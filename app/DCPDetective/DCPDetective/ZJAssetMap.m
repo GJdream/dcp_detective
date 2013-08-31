@@ -78,7 +78,7 @@ static NSArray *parseAssetList(ZJXMLRichElement *element)
         [NSMutableArray arrayWithCapacity:element.childCount];
 
     for (ZJXMLRichElement *child in element.children) {
-        [result  addObject:parseAsset(child)];
+        [result addObject:parseAsset(child)];
     }
 
     return result;
