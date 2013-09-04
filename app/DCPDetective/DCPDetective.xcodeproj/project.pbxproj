@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1F05C66517CD192E00943033 /* ZJXMLRichElement.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F05C66417CD192E00943033 /* ZJXMLRichElement.m */; };
+		1F05C66A17D7D25400943033 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F05C66917D7D25400943033 /* Security.framework */; };
 		1F8E20FD17C954AE00596B6D /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F8E20FC17C954AE00596B6D /* Cocoa.framework */; };
 		1F8E210717C954AE00596B6D /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F8E210517C954AE00596B6D /* InfoPlist.strings */; };
 		1F8E210917C954AE00596B6D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E210817C954AE00596B6D /* main.m */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		1F05C66317CD192E00943033 /* ZJXMLRichElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJXMLRichElement.h; sourceTree = "<group>"; };
 		1F05C66417CD192E00943033 /* ZJXMLRichElement.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJXMLRichElement.m; sourceTree = "<group>"; };
+		1F05C66917D7D25400943033 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		1F8E20F917C954AE00596B6D /* DCPDetective.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DCPDetective.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F8E20FC17C954AE00596B6D /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		1F8E20FF17C954AE00596B6D /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -71,6 +73,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F05C66A17D7D25400943033 /* Security.framework in Frameworks */,
 				1F8E20FD17C954AE00596B6D /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -90,6 +93,7 @@
 		1F8E20F017C954AD00596B6D = {
 			isa = PBXGroup;
 			children = (
+				1F05C66917D7D25400943033 /* Security.framework */,
 				1F8E210217C954AE00596B6D /* DCPDetective */,
 				1F8E211F17C954AE00596B6D /* DCPDetectiveTests */,
 				1F8E20FB17C954AE00596B6D /* Frameworks */,
