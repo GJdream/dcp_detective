@@ -168,7 +168,18 @@ static NSArray *dcpIssues(NSString *path)
         return results;
     }
 
+    ZJXMLRichElement *packingList =
+    [ZJXMLRichElement elementWithContentsOfFile:path];
+
+    if (!packingList) {
+        [results addObject:@"Error: cannot parse packing list"];
+        return nil;
+    }
+
     // TODO
+
+    // For each asset in the packing list,
+    //  Get the corresponding path
 
     return results;
 }
