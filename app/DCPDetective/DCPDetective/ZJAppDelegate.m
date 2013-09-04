@@ -13,6 +13,17 @@
 
 #import "ZJAppDelegate.h"
 
+static NSString *dcpOK(NSString *path)
+    // Considers the DCP directory at 'path'; returns a descriptive message if
+    // any inconsistencies are found in the DCP, and nil otherwise.  Returns nil
+    // if all of the following conditions are met:
+    //
+    // * An ASSETMAP file is found at the root of the DCP directory.
+    // * All asset sizes and hashes match the associated packing list.
+{
+    return nil;
+}
+
 @implementation ZJAppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
@@ -22,17 +33,22 @@
 
     NSMutableArray *args =
         [[[NSProcessInfo processInfo] arguments] mutableCopy];
+
     [args removeObjectAtIndex:0];
 
     for (NSString *path in args) {
-        ZJAssetMap *assetMap = [ZJAssetMap assetMapFromDCP:path];
+        printf("%s: ", [path UTF8String]);
+        fflush(stdout);
 
-        // TODO
-        
-        NSLog(@"\n%@", assetMap);
-//        NSLog(@"SHA-1: %@",
-//              [ZJFileUtil
-//               sha1:[path stringByAppendingPathComponent:@"ASSETMAP"]]);
+        NSString *message = dcpOK(path);
+
+        if (message) {
+            puts("Inconsistencies:");
+            puts([message UTF8String]);
+        }
+        else {
+            puts("OK");
+        }
     }
 
     // Exit the application.
