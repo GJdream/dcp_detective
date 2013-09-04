@@ -20,7 +20,6 @@
                           error:nil];
 
     if (!doc) {
-        NSLog(@"Warning: could not load XML file: %@", path);
         return nil;
     }
 
@@ -32,7 +31,7 @@
     ZJXMLRichElement *result = [[ZJXMLRichElement alloc] init];
 
     result.element = element;
-    
+
     return result;
 }
 
@@ -41,7 +40,6 @@
     NSArray *children = [self.element elementsForName:key];
 
     if (children.count != 1) {
-        NSLog(@"Warning: did not find exactly one value for key %@", key);
         return nil;
     }
 

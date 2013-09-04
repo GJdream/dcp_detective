@@ -17,14 +17,15 @@
 @property NSXMLElement *element;  // the wrapped XML element
 
 + (ZJXMLRichElement *)elementWithContentsOfFile:(NSString *)path;
-    // Returns a rich element representing the contents of the file at 'path'.
+    // Returns a rich element representing the contents of the file at 'path',
+    // or nil if the file cannot be parsed.
 
 + (ZJXMLRichElement *)elementWithElement:(NSXMLElement *)element;
     // Returns a rich element wrapping the specified 'element'.
 
 - (ZJXMLRichElement *)child:(NSString *)key;
-    // Returns the child element having tag 'key'.  The behavior is undefined
-    // unless 'parent' has exactly one child for tag 'key'.
+    // Returns the child element having tag 'key', or nil if the receiver does
+    // not have exactly one matching child.
 
 - (NSUInteger)childCount;
     // Returns the number of children in the wrapped element.
