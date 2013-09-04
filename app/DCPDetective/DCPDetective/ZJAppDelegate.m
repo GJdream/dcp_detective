@@ -41,26 +41,48 @@ static ZJXMLRichElement *assetMapFromDCP(NSString              *path,
     return nil;
 }
 
-static NSString *dcpOK(NSString *path)
-    // Considers the DCP directory at 'path'; returns a descriptive message if
-    // any inconsistencies are found in the DCP, and nil otherwise.  Returns nil
-    // if all of the following conditions are met:
+static NSArray *dcpOK(NSString *path)
+    // Diagnoses problems in the DCP at directory 'path', and returns diagnostic
+    // messages.  Returns an empty array if no problems are found.  Failures of
+    // the following conditions are considered problems:
     //
     // * An ASSETMAP file is found at the root of the DCP directory.
     // * All asset sizes and hashes match the associated packing list.
     //
-    // The result message may contain multiple lines.  If so, the message is
-    // prefixed by a newline ('\n') and each line is prefixed with a tab ('\t')
-    // to appear indented one level when logged.
+    // Each message begins with either "Error" or "Warning" to indicate relative
+    // severity.
 {
     enum ZJAssetMapFormat format;
     ZJXMLRichElement *assetMap = assetMapFromDCP(path, &format);
 
     if (!assetMap) {
-        return @"asset map could not be parsed";
+        return [NSArray arrayWithObject:@"Error: asset map cannot be parsed"];
     }
 
-    return nil;
+    NSMutableArray *results = [NSMutableArray new];
+
+    if (format == ZJAssetMapFormatSMPTE) {
+        [results addObject:@"Warning: asset map has unsupported format SMPTE"];
+    }
+
+    return results;
+}
+
+static void printDiagnostics(NSArray *messages)
+    // Formats 'messages' to the standard output stream.  If 'messages' contains
+    // more than one element, each element is prefixed with a newline and a tab
+    // character ("\n\t").  If 'messages' is empty, the string "OK" is printed.
+{
+    switch ([messages count]) {
+        case 0:
+            puts("OK");
+            return;
+        case 1:
+            puts([messages[0] UTF8String]);
+            return;
+    }
+    printf("\n\t%s\n",
+           [[messages componentsJoinedByString:@"\n\t"] UTF8String]);
 }
 
 @implementation ZJAppDelegate
@@ -71,7 +93,7 @@ static NSString *dcpOK(NSString *path)
     // asset map.  Skip argument 0, which is just the program name.
 
     NSMutableArray *args =
-        [[[NSProcessInfo processInfo] arguments] mutableCopy];
+    [[[NSProcessInfo processInfo] arguments] mutableCopy];
 
     [args removeObjectAtIndex:0];
 
@@ -79,14 +101,7 @@ static NSString *dcpOK(NSString *path)
         printf("%s: ", [path UTF8String]);
         fflush(stdout);
 
-        NSString *message = dcpOK(path);
-
-        if (message) {
-            puts([message UTF8String]);
-        }
-        else {
-            puts("OK");
-        }
+        printDiagnostics(dcpOK(path));
 
         // TODO: Process each subdirectory of dir not called lost+found or
         // RECYCLER.
